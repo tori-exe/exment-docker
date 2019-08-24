@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  exment:
+    image: tori-exe/exment
+    build: .
+    restart: always
+    ports:
+      - 10000:80
+
+  mysql:
+    image: mysql/mysql-server:5.7
+    volumes:
+      - data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: exment
+      MYSQL_USER: exment
+      MYSQL_PASSWORD: exment
+volumes:
+  data:
